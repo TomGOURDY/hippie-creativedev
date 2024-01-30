@@ -8,6 +8,7 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
+  margin: 0;
   display: flex;
 }
 
@@ -61,6 +62,12 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+#peace-container #peace-logo {
+  width: 40px;
+  height: 40px;
+  position: absolute;
 }
 
 /*# sourceMappingURL=index.8368275b.css.map */
