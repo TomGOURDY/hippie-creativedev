@@ -1,0 +1,18 @@
+body {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: hsla(0, 0%, 0%, 1);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: radial-gradient(top, circle cover, hsla(243, 15%, 38%, .8) 20%, hsla(0, 0%, 5%, 1) 80%);
+}
+
+canvas {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translate( -50%, -50%);
+  cursor: pointer;
+}
