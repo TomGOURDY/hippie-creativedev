@@ -63,4 +63,40 @@ body {
   left: 0;
 }
 
+#tele #button {
+  z-index: 4;
+  justify-content: space-evenly;
+  width: 109px;
+  height: 15px;
+  display: flex;
+  position: absolute;
+  top: 39%;
+  right: 13px;
+}
+
+#tele #button .button {
+  cursor: pointer;
+  background-color: #e2e2e2;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 3px #2e2a27;
+}
+
+#tele #button .button.clicked {
+  animation: 1s clickAnimation;
+}
+
+@keyframes clickAnimation {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 3px #2e2a27;
+  }
+
+  50% {
+    transform: translateY(3px);
+    box-shadow: 0 1px #2e2a27;
+  }
+}
+
 /*# sourceMappingURL=index.8368275b.css.map */
