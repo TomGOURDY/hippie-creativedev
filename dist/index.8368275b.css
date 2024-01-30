@@ -25,13 +25,32 @@ body {
 #tele .video {
   z-index: 2;
   clip-path: url("#clipPath");
-  background: red;
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 71%;
-  left: 40px;
+  top: 62%;
+  left: 48px;
   transform: translateY(-50%);
+  box-shadow: inset 0 0 50px #000000a6;
+}
+
+#tele .video video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+#tele .gradient {
+  z-index: 3;
+  clip-path: url("#clipPath");
+  background: radial-gradient(circle, #0000 0%, #000 100%);
+  width: 398px;
+  height: 334px;
+  position: absolute;
+  top: 49%;
+  left: 48px;
+  transform: translateY(-50%);
+  box-shadow: inset 0 0 44px #000;
 }
 
 #tele #svgClipPath {
