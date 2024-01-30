@@ -1,5 +1,5 @@
 html {
-  background-color: #000;
+  background-color: #1e1e1e;
 }
 
 body {
@@ -9,6 +9,13 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
+}
+
+#nature_SVG {
+  cursor: crosshair;
+  width: 100%;
+  height: 100%;
+  position: fixed;
 }
 
 #tele {
