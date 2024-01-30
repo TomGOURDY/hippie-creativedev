@@ -64,7 +64,7 @@ body {
   left: 0;
 }
 
-#peace-container #peace-logo {
+.peace-logo {
   width: 40px;
   height: 40px;
   position: absolute;
