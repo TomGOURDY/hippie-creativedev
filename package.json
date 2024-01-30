@@ -1,0 +1,11 @@
+{
+  "name": "hippie-land",
+  "source": "index.html",
+  "scripts": {
+    "dev": "parcel index.html"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.11.0",
+    "parcel": "^2.11.0"
+  }
+}

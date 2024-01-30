@@ -1,0 +1,44 @@
+html{
+    background-color: #000000;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#tele{
+    width: 100%;
+    max-width: 600px;
+}
+
+#tele {
+    position: relative;
+    img{
+        width: 100%;
+        object-fit: contain;
+    }
+    .video{
+        position: absolute;
+        top: 71%;
+        left: 40px;
+        background: red;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        clip-path: url(#clipPath);
+        transform: translateY(-50%);
+    }
+    #svgClipPath{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+    }
+}

@@ -1,0 +1,24 @@
+html {
+  background-color: #000;
+}
+
+body {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+#tele {
+  width: 100%;
+  max-width: 600px;
+}
+
+#tele img {
+  object-fit: contain;
+  width: 100%;
+}
+
+/*# sourceMappingURL=index.b2625c6b.scss.map */
