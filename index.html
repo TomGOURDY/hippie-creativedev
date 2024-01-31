@@ -12,14 +12,17 @@
     <div id="tele">
         <div id="button">
             <div class="button button1"></div>
-            <div class="button button1"></div>
-            <div class="button button1"></div>
+            <div class="button button2"></div>
+            <div class="button button3"></div>
         </div>
         <img src="assets/tele2.png" alt="">
         <div class="video">
             <video src="assets/video/hippie.mp4" autoplay loop muted></video>
         </div>
-        <div class="gradient"></div>
+        <div class="overlay gradient-effect"></div>
+<!--        <div class="overlay scanlines"></div>-->
+        <div class="overlay" id="screen"></div>
+        <canvas id="canvas" class="overlay snow"></canvas>
         <svg id="svgClipPath" xmlns="http://www.w3.org/2000/svg" width="398" height="330" viewBox="0 0 398 330" fill="none">
             <defs>
                 <clipPath id="clipPath">
@@ -27,6 +30,7 @@
                 </clipPath>
             </defs>
         </svg>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js"></script>
         <script src="js/index.js"></script>
     </div>
 </body>
