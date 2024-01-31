@@ -6,17 +6,17 @@ function motion() {
   var u = 0;
   var msdn = true;
   var ms = {
-    x: 140,
-    y: 5
+    x: 199,
+    y: 0
   };
 
-  var grav = 0.05;
-  var rng = 16;
+  var grav = 0.02;
+  var rng = 20;
   var nrng = rng * rng;
   var den = 2.5;
   var frc = 1;
   var nfrc = 1;
-  var pli = 0.1;
+  var pli = 30;
   var gnum = 18;
   var gs = 1 / (398 / gnum);
 
@@ -101,7 +101,7 @@ function motion() {
 
   var fall = function() {
     var i;
-    for (i = -4; i <= 4; i++) {
+    for (i = -6; i <= 6; i++) {
       parts[nparts++] = new P(ms.x + i * 10, ms.y,
         Math.floor(cnt / 10 % 5));
       parts[nparts - 1].vy = 5;
@@ -240,14 +240,14 @@ function motion() {
     if (p.x < 5) {
       p.vx += (5 - p.x) * 0.5 - p.vx * 0.5;
     }
-    if (p.x > 275) {
-      p.vx += (275 - p.x) * 0.5 - p.vx * 0.5;
+    if (p.x > 398) {
+      p.vx += (398 - p.x) * 0.5 - p.vx * 0.5;
     }
     if (p.y < 5) {
       p.vy += (5 - p.y) * 0.5 - p.vy * 0.5;
     }
-    if (p.y > 275) {
-      p.vy += (275 - p.y) * 0.5 - p.vy * 0.5;
+    if (p.y > 398) {
+      p.vy += (398 - p.y) * 0.5 - p.vy * 0.5;
     }
   }
 
@@ -263,7 +263,7 @@ function Nxt() {
   this.nx;
   this.ny;
   this.wgt;
-  this.rng = 16;
+  this.rng = 20;
   this.frc = 1;
   this.nfrc = 1;
   this.den = 2.5;
