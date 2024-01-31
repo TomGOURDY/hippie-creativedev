@@ -1,6 +1,7 @@
 html{
-    background-color: #000000;
+    background-color: #1e1e1e;
 }
+
 body{
     height: 100vh;
     width: 100vw;
@@ -11,18 +12,44 @@ body{
     margin: 0;
 }
 
-#tele{
+#flowerCanvas {
+    position: fixed;
     width: 100%;
-    max-width: 600px;
+    height: 100%;
+    cursor: crosshair;
+}
+  
+.flower path {
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
-#tele{
+.layer {
+    animation-name: layerAnim;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+    transform-box: fill-box;
+    transform-origin: center center;
+}
+
+@keyframes layerAnim {
+    from, to { animation-timing-function: ease-out; }
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+  
+  
+  
+
+#tele {
+    width: 100%;
+    max-width: 600px;
     position: relative;
-    img{
+    img {
         width: 100%;
         object-fit: contain;
     }
-    .video{
+    .video {
         position: absolute;
         top: 49%;
         left: 48px;
@@ -32,13 +59,13 @@ body{
         clip-path: url(#clipPath);
         transform: translateY(-50%);
         box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.65) inset;
-        video{
+        video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
     }
-    .gradient{
+    .gradient {
             position: absolute;
             top: 49%;
             left: 48px;
@@ -55,7 +82,7 @@ body{
                 height: 40px;
             }
     }
-    #svgClipPath{
+    #svgClipPath {
         position: absolute;
         top: 0;
         left: 0;

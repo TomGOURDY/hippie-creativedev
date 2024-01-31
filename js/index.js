@@ -3,7 +3,7 @@ document.querySelectorAll('.button').forEach(button => {
         button.classList.add('clicked');
         setTimeout(() => {
             button.classList.remove('clicked');
-        }, 1000); // 1000 milliseconds = 1 second
+        }, 1000);
     });
 })
 
@@ -13,11 +13,3 @@ document.querySelector('.button3').addEventListener('click', () => {
     motionInstance = new Motion();
     motionInstance.initialize();
 });
-
-
-
-
-/**********************************************************\
-		- Peace & Love Logo animation
-\**********************************************************/
-
