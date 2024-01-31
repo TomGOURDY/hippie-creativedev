@@ -1,18 +1,28 @@
+import {fillCanvas} from "./flowerManager";
+import {createDynamicPeaceAndLove} from "./peace";
+
+
 document.querySelectorAll('.button').forEach(button => {
     button.addEventListener('click', () => {
         button.classList.add('clicked');
         setTimeout(() => {
             button.classList.remove('clicked');
-        }, 1000); // 1000 milliseconds = 1 second
+        }, 1000);
     });
-});
+})
+
+
+
 
 document.querySelector('.button1').addEventListener('click', () => {
     let snow = document.querySelector('.snow');
     snow.classList.toggle('active');
     setTimeout(() => {
         snow.classList.toggle('active');
-    }, 300); // 1000 milliseconds = 1 second
+    }, 400);
+    document.querySelector('#audio').volume = 1;
+    document.querySelector('#audio').play();
+
 });
 
 document.querySelector('.button2').addEventListener('click', () => {
@@ -70,3 +80,51 @@ var toggle = true;
     generate_noise(ctx);
     requestAnimationFrame(loop);
 })();
+
+const sources = document.querySelectorAll('#video source');
+let currentSourceIndex = 0;
+const videoElement = document.getElementById('video');
+
+
+function switchVideoSource() {
+    document.querySelector('#audio').play();
+    currentSourceIndex = currentSourceIndex + 1;
+    videoElement.src = sources[currentSourceIndex].src;
+    videoElement.load(); // Reload video element with new source
+    videoElement.play(); // Play video
+}
+document.querySelector('#power').addEventListener('click', () => {
+    let video = document.querySelector('.video');
+    let snow = document.querySelector('.snow');
+    video.classList.toggle('active');
+    videoElement.play();
+    setTimeout(() => {
+        let motionInstance = new Motion();
+        motionInstance.initialize();
+    },3000);
+    setTimeout(() => {
+        videoElement.play();
+        snow.classList.toggle('active');
+        switchVideoSource();
+        setTimeout(() => {
+            snow.classList.toggle('active');
+        }, 400);
+        fillCanvas();
+        setTimeout(() => {
+            snow.classList.toggle('active');
+            switchVideoSource();
+            setTimeout(() => {
+                snow.classList.toggle('active');
+            }, 400);
+            createDynamicPeaceAndLove();
+            setTimeout(() => {
+                snow.classList.toggle('active');
+                switchVideoSource();
+                setTimeout(() => {
+                    snow.classList.toggle('active');
+                }, 400);
+                video.classList.toggle('effect');
+            },10000)
+        },10000)
+    },10000)
+});
