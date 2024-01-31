@@ -15,6 +15,15 @@ document.querySelector('.button1').addEventListener('click', () => {
     }, 300); // 1000 milliseconds = 1 second
 });
 
+document.querySelector('.button2').addEventListener('click', () => {
+    let snow = document.querySelector('.video');
+    snow.classList.toggle('effect');
+    // setTimeout(() => {
+    //     snow.classList.toggle('effect');
+    // }, 5000); // 1000 milliseconds = 1 second
+});
+
+
 
 
 var canvas = document.getElementById('canvas'),

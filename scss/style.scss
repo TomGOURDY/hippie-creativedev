@@ -37,6 +37,9 @@ $screen-background: #121010;
             height: 100%;
             object-fit: cover;
         }
+        &.effect{
+            animation: videoEffect 2s ease infinite;
+        }
     }
     .overlay,.screen-container{
             position: absolute;
@@ -115,6 +118,39 @@ $screen-background: #121010;
     50% {
         box-shadow: 0px 1px 0px 0px #2E2A27;
         transform: translateY(3px);
+    }
+}
+
+@keyframes videoEffect {
+    0%, 100% {
+        filter: none;
+    }
+    10% {
+        filter: blur(100px);
+    }
+    20% {
+        filter: hue-rotate(180deg);
+    }
+    30% {
+        filter: invert(1);
+    }
+    40% {
+        filter: grayscale(1);
+    }
+    50% {
+        filter: saturate(10);
+    }
+    60% {
+        filter: brightness(10);
+    }
+    70% {
+        filter: invert(1);
+    }
+    80% {
+        filter: grayscale(1);
+    }
+    90% {
+        filter: grayscale(1);
     }
 }
 
