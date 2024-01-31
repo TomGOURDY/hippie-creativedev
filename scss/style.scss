@@ -11,6 +11,7 @@ body{
     justify-content: center;
     margin: 0;
 }
+$screen-background: #121010;
 
 #flowerCanvas {
     position: fixed;
@@ -53,34 +54,68 @@ body{
         position: absolute;
         top: 49%;
         left: 48px;
-        width: 398px;
-        height: 334px;
+        width: 0px;
+        height: 0px;
         z-index: 2;
         clip-path: url(#clipPath);
         transform: translateY(-50%);
+        transition: height 0.3s ease;
         box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.65) inset;
         video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+        &.effect{
+            animation: videoEffect 2s ease infinite;
+        }
+        &.active{
+            height: 334px;
+            width: 398px;
+
+        }
     }
-    .gradient {
+    .overlay{
+        .peace-logo {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+        }
+        .world{
+            position: absolute;
+            width:100%;
+            height:100%;
+            opacity: .2;
+        }
+    }
+    .overlay,.screen-container{
             position: absolute;
             top: 49%;
             left: 48px;
             width: 398px;
             height: 334px;
             z-index: 3;
-            background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
             clip-path: url(#clipPath);
             transform: translateY(-50%);
+    }
+    .scanlines {
+        z-index: 9999;
+        background: linear-gradient(
+                        transparentize($screen-background, 1) 50%,
+                        transparentize(darken($screen-background, 10), 0.75) 50%
+        ),
+        linear-gradient(
+                        90deg,
+                        transparentize(#ff0000, 0.94),
+                        transparentize(#00ff00, 0.98),
+                        transparentize(#0000ff, 0.94)
+        );
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+    }
+    .gradient-effect{
+        background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
             box-shadow: 0px 0px 44px 0px rgba(0, 0, 0, 1) inset;
-            .peace-logo {
-                position: absolute;
-                width: 40px;
-                height: 40px;
-            }
     }
     #svgClipPath {
         position: absolute;
@@ -112,6 +147,27 @@ body{
             }
         }
     }
+    #power{
+        height: 15px;
+        width: 15px;
+        right: 60px;
+        top: 368px;
+        position: absolute;
+        z-index: 4;
+        background: red;
+        cursor: pointer;
+    }
+}
+#canvas{
+    background: #fff;
+}
+.snow{
+    z-index: 99!important;
+    opacity: 0;
+    pointer-events: none;
+    &.active{
+        opacity: 1;
+    }
 }
 
 @keyframes clickAnimation {
@@ -124,3 +180,56 @@ body{
         transform: translateY(3px);
     }
 }
+
+@keyframes videoEffect {
+    0%, 100% {
+        filter: none;
+    }
+    10% {
+        filter: blur(100px);
+    }
+    20% {
+        filter: hue-rotate(180deg);
+    }
+    30% {
+        filter: invert(1);
+    }
+    40% {
+        filter: grayscale(1);
+    }
+    50% {
+        filter: saturate(10);
+    }
+    60% {
+        filter: brightness(10);
+    }
+    70% {
+        filter: invert(1);
+    }
+    80% {
+        filter: grayscale(1);
+    }
+    90% {
+        filter: grayscale(1);
+    }
+}
+
+$color-main:#bb2020;
+$color-bright:lighten($color-main,25%);
+$color-shadow:darken($color-main,25%);
+.obj {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    background: lighten($color-main, 10%);
+    border-radius: 100px;
+    box-shadow: inset -2px 2px 2px 0px rgba(red($color-bright), green($color-bright), blue($color-bright), 1), inset 2px -2px 2px 0px rgba(red($color-shadow), green($color-shadow), blue($color-shadow), 0.3), inset 0px 0px 20px 5px rgba(red($color-main), green($color-main), blue($color-main), 1), 1px 1px 0 0 darken($color-main, 3%), 1px 1px 0 0 $color-shadow, 2px 2px 0 0 $color-shadow, 2px 2px 1pc 1px rgba(red($color-shadow), green($color-shadow), blue($color-shadow), 0.1), 1px 1px 1px 1px rgba(red($color-shadow), green($color-shadow), blue($color-shadow), 0.1), 1px 1px 4px 1px rgba(red($color-shadow), green($color-shadow), blue($color-shadow), 1);
+    transition: all 0.3s ease;
+
+    &:active {
+        background: lighten($color-main, 15%);
+        box-shadow: inset -2px 2px 2px 0px rgba(red($color-bright), green($color-bright), blue($color-bright), 1), inset 2px -2px 2px 0px rgba(red($color-shadow), green($color-shadow), blue($color-shadow), 0.3), inset 0px 0px 40px 15px rgba(red($color-main), green($color-main), blue($color-main), 1), 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 2px 1px rgba(red($color-shadow), green($color-shadow), blue($color-shadow), 0.5), 0px 0px 4px 1px rgba(red($color-shadow), green($color-shadow), blue($color-shadow), 1);
+    }
+}
+
+

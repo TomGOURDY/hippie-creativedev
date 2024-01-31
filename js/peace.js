@@ -1,22 +1,22 @@
-const fps = 60; // 60 frames/second
+const fps = 30; // 60 frames/second
 const logo = document.getElementById("peace-logo");
 
-// Event on click
-document.body.addEventListener("click", createDynamicPeaceAndLove);
+export function createDynamicPeaceAndLove() {
+    document.body.addEventListener("click", createDynamicPeaceAndLove);
+    if (document.querySelector(".peace-container").children.length < 30) {
+        const dynamicSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
-function createDynamicPeaceAndLove() {
-    const dynamicSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        dynamicSVG.setAttribute("class", "peace-logo");
+        dynamicSVG.setAttribute("viewBox", "0 0 512 512");
 
-    dynamicSVG.setAttribute("class", "peace-logo");
-    dynamicSVG.setAttribute("viewBox", "0 0 512 512");
+        path.setAttribute("d", "M224 445.3V323.5l-94.3 77.1c26.1 22.8 58.5 38.7 94.3 44.7zM89.2 351.1L224 240.8V66.7C133.2 81.9 64 160.9 64 256c0 34.6 9.2 67.1 25.2 95.1zm293.1 49.5L288 323.5V445.3c35.7-6 68.1-21.9 94.3-44.7zm40.6-49.5c16-28 25.2-60.5 25.2-95.1c0-95.1-69.2-174.1-160-189.3V240.8L422.8 351.1zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z");
 
-    path.setAttribute("d", "M224 445.3V323.5l-94.3 77.1c26.1 22.8 58.5 38.7 94.3 44.7zM89.2 351.1L224 240.8V66.7C133.2 81.9 64 160.9 64 256c0 34.6 9.2 67.1 25.2 95.1zm293.1 49.5L288 323.5V445.3c35.7-6 68.1-21.9 94.3-44.7zm40.6-49.5c16-28 25.2-60.5 25.2-95.1c0-95.1-69.2-174.1-160-189.3V240.8L422.8 351.1zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z");
+        dynamicSVG.appendChild(path);
+        document.querySelector(".peace-container").appendChild(dynamicSVG);
 
-    dynamicSVG.appendChild(path);
-    document.querySelector(".peace-container").appendChild(dynamicSVG);
-
-    animateLogo(dynamicSVG);
+        animateLogo(dynamicSVG);
+    }
 }
 
 var lastColor = -1;
@@ -24,8 +24,8 @@ var lastColor = -1;
 function animateLogo(logo) {
     let width,
         height,
-        velocityX = 1, // 1 px/frame
-        velocityY = 1, // 1 px/frame
+        velocityX = 2, // 1 px/frame
+        velocityY = 2, // 1 px/frame
         pause = true;
 
     reset();
@@ -36,7 +36,7 @@ function animateLogo(logo) {
         if (pause) return;
 
         var rect = logo.getBoundingClientRect();
-        var parentRect = document.querySelector(".gradient").getBoundingClientRect();
+        var parentRect = document.querySelector(".overlay").getBoundingClientRect();
 
         var left = rect.x - parentRect.x;
         var top = rect.y - parentRect.y;
@@ -57,8 +57,8 @@ function animateLogo(logo) {
 
 
     function reset() {
-        width   = document.querySelector(".gradient").clientWidth;
-        height  = document.querySelector(".gradient").clientHeight;
+        width   = document.querySelector(".overlay").clientWidth;
+        height  = document.querySelector(".overlay").clientHeight;
 
         pause =
             width <= logo.getBoundingClientRect().width ||
