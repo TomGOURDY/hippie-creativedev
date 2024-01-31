@@ -131,8 +131,7 @@ document.querySelector('#power').addEventListener('click', () => {
     video.classList.toggle('active');
     videoElement.play();
     setTimeout(() => {
-        let motionInstance = new Motion();
-        motionInstance.initialize();
+        video.classList.toggle('effect');
     },3000);
     setTimeout(() => {
         videoElement.play();
@@ -155,7 +154,8 @@ document.querySelector('#power').addEventListener('click', () => {
                 setTimeout(() => {
                     snow.classList.toggle('active');
                 }, 400);
-                video.classList.toggle('effect');
+                let motionInstance = new Motion();
+                motionInstance.initialize();
                 setTimeout(() => {
                     snow.classList.toggle('active');
                     setTimeout(() => {
@@ -167,8 +167,8 @@ document.querySelector('#power').addEventListener('click', () => {
                         overlay.classList.toggle('blendMode');
                     });
                     switchVideoSource();
-                },1000);
-            },1000)
-        },1000)
-    },1000)
+                },10000);
+            },10000)
+        },10000)
+    },10000)
 });
