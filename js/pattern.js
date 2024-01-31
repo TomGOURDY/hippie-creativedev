@@ -34,12 +34,13 @@ class World {
 
             uniforms: {
                 uTime: { type: 'f', value: 0 },
-                uHue: {type: 'f', value: .5},
+                uHue: {type: 'f', value: 1},
                 uHueVariation: {type: 'f', value: 1},
                 uGradient: {type: 'f', value: 1},
-                uDensity: {type: 'f', value: 1},
+                uDensity: {type: 'f', value: 0},
                 uDisplacement: {type: 'f', value: 1},
-                uMousePosition: {type: 'v2', value: new THREE.Vector2( 0.5, 0.5 ) }
+                uMousePosition: {type: 'v2', value: new THREE.Vector2( 0.5, 0.5 )
+                }
             }
         });
         this.planeGeometry = new THREE.PlaneGeometry(2, 2, 1, 1);
