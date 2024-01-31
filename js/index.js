@@ -5,14 +5,15 @@ document.querySelectorAll('.button').forEach(button => {
             button.classList.remove('clicked');
         }, 1000); // 1000 milliseconds = 1 second
     });
-});
+})
 
 
 
-});
-    motionInstance.initialize();
-    motionInstance = new Motion();
 document.querySelector('.button3').addEventListener('click', () => {
+    motionInstance = new Motion();
+    motionInstance.initialize();
+});
+
 
 
 
