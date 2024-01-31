@@ -97,3 +97,38 @@ body{
         transform: translateY(3px);
     }
 }
+
+@mixin backlight($x, $y, $spread, $size, $colorA, $colorB, $duration) {
+    &:after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+        transform: scale(1);
+        -webkit-filter: blur(10vw);
+        -moz-filter: blur(10vw);
+        -ms-filter: blur(10vw);
+        filter: blur(10vw);
+        background: linear-gradient(270deg, $colorA, $colorB);
+        background-size: 200% 200%;
+        animation: animateGlow $duration ease infinite;
+        opacity: 0.5;
+        
+        @keyframes animateGlow {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+        }
+    }
+}
+
+.tv {
+    position: relative;
+    z-index: 1;
+    @include backlight(0, 5vw, 5vw, 0.75, #0fff53, #ff0fab, 10s);
+}
