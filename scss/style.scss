@@ -8,6 +8,7 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin: 0;
 }
 
 #tele{
@@ -48,6 +49,11 @@ body{
             clip-path: url(#clipPath);
             transform: translateY(-50%);
             box-shadow: 0px 0px 44px 0px rgba(0, 0, 0, 1) inset;
+            .peace-logo {
+                position: absolute;
+                width: 40px;
+                height: 40px;
+            }
     }
     #svgClipPath{
         position: absolute;
