@@ -181,6 +181,41 @@ $screen-background: #121010;
     }
 }
 
+@mixin backlight($x, $y, $spread, $size, $colorA, $colorB, $duration) {
+    &:after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+        transform: scale(1);
+        -webkit-filter: blur(10vw);
+        -moz-filter: blur(10vw);
+        -ms-filter: blur(10vw);
+        filter: blur(10vw);
+        background: linear-gradient(270deg, $colorA, $colorB);
+        background-size: 200% 200%;
+        animation: animateGlow $duration ease infinite;
+        opacity: 0.5;
+        
+        @keyframes animateGlow {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+        }
+    }
+}
+
+.tv {
+    position: relative;
+    z-index: 1;
+    @include backlight(0, 5vw, 5vw, 0.75, #0fff53, #ff0fab, 10s);
+}
+
 @keyframes videoEffect {
     0%, 100% {
         filter: none;
@@ -231,5 +266,3 @@ $color-shadow:darken($color-main,25%);
         box-shadow: inset -2px 2px 2px 0px rgba(red($color-bright), green($color-bright), blue($color-bright), 1), inset 2px -2px 2px 0px rgba(red($color-shadow), green($color-shadow), blue($color-shadow), 0.3), inset 0px 0px 40px 15px rgba(red($color-main), green($color-main), blue($color-main), 1), 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 2px 1px rgba(red($color-shadow), green($color-shadow), blue($color-shadow), 0.5), 0px 0px 4px 1px rgba(red($color-shadow), green($color-shadow), blue($color-shadow), 1);
     }
 }
-
-
