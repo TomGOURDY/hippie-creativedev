@@ -36,7 +36,7 @@ function rndInt(min, max) {
 }
 
 
-function fillCanvas() {
+export function fillCanvas() {
   const svg = document.getElementById('flowerCanvas');
   let width, height, cx, cy;
 
@@ -212,4 +212,4 @@ class QCurve {
 }
 
 
-fillCanvas();
+// fillCanvas();
