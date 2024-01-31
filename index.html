@@ -11,11 +11,19 @@
 <body>
     <svg id="flowerCanvas"></svg>
     <div id="tele">
+        <div id="button">
+            <div class="button button1"></div>
+            <div class="button button2"></div>
+            <div class="button button3"></div>
+        </div>
         <img src="assets/tele2.png" alt="">
         <div class="video">
             <video src="assets/video/hippie.mp4" autoplay loop muted></video>
         </div>
-        <div class="gradient"></div>
+        <div class="gradient">
+            <div class="peace-container"></div>
+            <canvas id='canv'></canvas>
+        </div>
         <svg id="svgClipPath" xmlns="http://www.w3.org/2000/svg" width="398" height="330" viewBox="0 0 398 330" fill="none">
             <defs>
                 <clipPath id="clipPath">
@@ -25,6 +33,8 @@
         </svg>
         <script type="module" src="js/index.js"></script>
         <script type="module" src="js/flowerManager.js"></script>
+        <script src="js/peace.js"></script>
+        <script src="js/particles.js"></script>
     </div>
 </body>
 </html>

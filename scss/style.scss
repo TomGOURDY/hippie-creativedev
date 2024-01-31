@@ -9,6 +9,7 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin: 0;
 }
 
 #flowerCanvas {
@@ -19,22 +20,22 @@ body{
 }
   
 .flower path {
-stroke-linecap: round;
-stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .layer {
-animation-name: layerAnim;
-animation-duration: 4s;
-animation-fill-mode: both; 
-transform-box: fill-box;
-transform-origin: center center;
+    animation-name: layerAnim;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+    transform-box: fill-box;
+    transform-origin: center center;
 }
 
 @keyframes layerAnim {
-from, to { animation-timing-function: ease-out; }
-from { opacity: 0; }
-to { opacity: 1; }
+    from, to { animation-timing-function: ease-out; }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
   
   
@@ -50,10 +51,10 @@ to { opacity: 1; }
     }
     .video {
         position: absolute;
-        top: 62%;
+        top: 49%;
         left: 48px;
-        width: 100%;
-        height: 100%;
+        width: 398px;
+        height: 334px;
         z-index: 2;
         clip-path: url(#clipPath);
         transform: translateY(-50%);
@@ -75,6 +76,11 @@ to { opacity: 1; }
             clip-path: url(#clipPath);
             transform: translateY(-50%);
             box-shadow: 0px 0px 44px 0px rgba(0, 0, 0, 1) inset;
+            .peace-logo {
+                position: absolute;
+                width: 40px;
+                height: 40px;
+            }
     }
     #svgClipPath {
         position: absolute;
@@ -84,5 +90,37 @@ to { opacity: 1; }
         height: 100%;
         z-index: 1;
         opacity: 0;
+    }
+    #button{
+        height: 15px;
+        width: 109px;
+        right: 13px;
+        top: 39%;
+        position: absolute;
+        display: flex;
+        justify-content: space-evenly;
+        z-index: 4;
+        .button{
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            background-color: #E2E2E2;
+            box-shadow: 0px 3px 0px 0px #2E2A27;
+            cursor: pointer;
+            &.clicked{
+                animation: clickAnimation 1s ease;
+            }
+        }
+    }
+}
+
+@keyframes clickAnimation {
+    0%, 100% {
+        box-shadow: 0px 3px 0px 0px #2E2A27;
+        transform: translateY(0);
+    }
+    50% {
+        box-shadow: 0px 1px 0px 0px #2E2A27;
+        transform: translateY(3px);
     }
 }
