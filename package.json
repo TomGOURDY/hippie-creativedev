@@ -5,10 +5,12 @@
     "dev": "parcel index.html"
   },
   "devDependencies": {
+    "@parcel/transformer-glsl": "^2.11.0",
     "@parcel/transformer-sass": "^2.11.0",
     "parcel": "^2.11.0"
   },
   "dependencies": {
+    "chroma-js": "^2.4.2",
     "three": "^0.161.0"
   }
 }
