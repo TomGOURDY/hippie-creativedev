@@ -20,11 +20,12 @@
         <div id="power" class="obj"></div>
         <img src="assets/tele2.png" alt="">
         <div class="video">
-            <video loop id="video" loop>
+            <video loop id="video" loop preload="auto">
                 <source src="assets/video/video-1.mp4" type="video/mp4">
                 <source src="assets/video/video-2.mp4" type="video/mp4">
                 <source src="assets/video/video-3.mp4" type="video/mp4">
                 <source src="assets/video/video-4.mp4" type="video/mp4">
+                <source src="assets/video/video-5.mp4" type="video/mp4">
             </video>
         </div>
         <div class="overlay gradient-effect"></div>
@@ -50,7 +51,6 @@
             </defs>
         </svg>
         <script type="module" src="js/index.js"></script>
-        <script src="js/pattern.js" type="module"></script>
         <script src="js/particles.js"></script>
         <script type="vert" id="fragmentShader">
             precision highp float;

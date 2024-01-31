@@ -1,5 +1,6 @@
 import {fillCanvas} from "./flowerManager";
 import {createDynamicPeaceAndLove} from "./peace";
+import {domIsReady} from "./pattern";
 
 
 document.querySelectorAll('.button').forEach(button => {
@@ -124,6 +125,14 @@ document.querySelector('#power').addEventListener('click', () => {
                     snow.classList.toggle('active');
                 }, 400);
                 video.classList.toggle('effect');
+                setTimeout(() => {
+                    snow.classList.toggle('active');
+                    switchVideoSource();
+                    setTimeout(() => {
+                        snow.classList.toggle('active');
+                    }, 400);
+                    domIsReady();
+                },10000);
             },10000)
         },10000)
     },10000)
