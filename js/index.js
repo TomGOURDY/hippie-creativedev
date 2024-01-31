@@ -2,6 +2,10 @@ import {fillCanvas} from "./flowerManager";
 import {createDynamicPeaceAndLove} from "./peace";
 import {domIsReady} from "./pattern";
 
+const sources = document.querySelectorAll('#video source');
+let currentSourceIndex = 0;
+const videoElement = document.getElementById('video');
+
 
 document.querySelectorAll('.button').forEach(button => {
     button.addEventListener('click', () => {
@@ -32,6 +36,12 @@ document.querySelector('.button2').addEventListener('click', () => {
     // setTimeout(() => {
     //     snow.classList.toggle('effect');
     // }, 5000); // 1000 milliseconds = 1 second
+});
+
+document.querySelector('.button3').addEventListener('click', () => {
+  audio();
+  switchVideoSource()
+  document.querySelector('#video').play() ;
 });
 
 
@@ -82,9 +92,6 @@ var toggle = true;
     requestAnimationFrame(loop);
 })();
 
-const sources = document.querySelectorAll('#video source');
-let currentSourceIndex = 0;
-const videoElement = document.getElementById('video');
 
 
 function switchVideoSource() {
@@ -93,6 +100,30 @@ function switchVideoSource() {
     videoElement.src = sources[currentSourceIndex].src;
     videoElement.load(); // Reload video element with new source
     videoElement.play(); // Play video
+}
+
+function audio() {
+    var video = document.querySelector('.video video');
+    var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    var source = audioContext.createMediaElementSource(video);
+    var reverb = audioContext.createConvolver();
+    var impulseResponseLength = 2 * audioContext.sampleRate;
+    var impulseResponse = audioContext.createBuffer(2, impulseResponseLength, audioContext.sampleRate);
+    for (var channel = 0; channel < impulseResponse.numberOfChannels; channel++) {
+        var bufferData = impulseResponse.getChannelData(channel);
+        for (var i = 0; i < impulseResponseLength; i++) {
+            bufferData[i] = Math.random() * 2 - 1;
+        }
+    }
+
+    reverb.buffer = impulseResponse;
+
+    source.connect(reverb);
+    reverb.connect(audioContext.destination);
+
+    video.addEventListener('timeupdate', function() {
+        audioContext.currentTime = video.currentTime;
+    });
 }
 document.querySelector('#power').addEventListener('click', () => {
     let video = document.querySelector('.video');
@@ -127,13 +158,17 @@ document.querySelector('#power').addEventListener('click', () => {
                 video.classList.toggle('effect');
                 setTimeout(() => {
                     snow.classList.toggle('active');
-                    switchVideoSource();
                     setTimeout(() => {
                         snow.classList.toggle('active');
                     }, 400);
                     domIsReady();
-                },10000);
-            },10000)
-        },10000)
-    },10000)
+                    audio();
+                    document.querySelectorAll('.overlay').forEach(overlay => {
+                        overlay.classList.toggle('blendMode');
+                    });
+                    switchVideoSource();
+                },1000);
+            },1000)
+        },1000)
+    },1000)
 });
