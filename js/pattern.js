@@ -2,7 +2,6 @@ import * as THREE from "three";
 
 class World {
     constructor(width, height) {
-
         this.renderer = new THREE.WebGLRenderer({
             alpha: true,
             antialias: true
@@ -96,7 +95,7 @@ let parameters = {
 }
 
 export function domIsReady() {
-    world = new World(this.container, this.renderer, document.querySelector(".overlay").clientWidth, document.querySelector(".overlay").clientHeight);
+    world = new World(document.querySelector(".overlay").clientWidth, document.querySelector(".overlay").clientHeight);
     window.addEventListener('resize', handleWindowResize, false);
     document.addEventListener("mousemove", handleMouseMove, false);
     handleWindowResize();

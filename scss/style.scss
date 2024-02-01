@@ -283,3 +283,48 @@ $color-shadow:darken($color-main,25%);
     position: absolute;
     z-index: 999999;
 }
+
+#glitch{
+    z-index: 999999999999;
+}
+
+#topScreen, #bottomScreen {
+    position: fixed;
+    width: 100%;
+    background-color: black;
+    z-index: 10;
+}
+
+#topScreen {
+    top: 0;
+    height: 0%;
+    &.animate{
+        animation: slideDown 2s forwards; /* Adjust time as needed */
+    }
+}
+
+#bottomScreen {
+    bottom: 0;
+    height: 0%;
+    &.animate{
+        animation: slideUp 2s forwards; /* Adjust time as needed */
+    }
+}
+
+@keyframes slideDown {
+    from {
+        height: 0%; /* Adjust starting height as needed */
+    }
+    to {
+        height: 50%;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        height: 0%; /* Adjust starting height as needed */
+    }
+    to {
+        height: 50%;
+    }
+}

@@ -349,7 +349,7 @@
 // mot.set();
 
 
-class Motion {
+export class Motion {
     constructor() {
         this.c = null;
         this.$ = null;

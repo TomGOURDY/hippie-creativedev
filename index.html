@@ -10,6 +10,8 @@
 </head>
 <body>
 <div id="circle"></div>
+<div id="topScreen"></div>
+<div id="bottomScreen"></div>
 
     <svg id="flowerCanvas"></svg>
     <audio src="assets/sound/vhf2.wav" id="audio"></audio>
@@ -53,7 +55,9 @@
             </defs>
         </svg>
         <script type="module" src="js/index.js"></script>
-        <script src="js/particles.js"></script>
+        <script type="text/javascript" src="js/html2canvas.js"></script>
+        <script type="text/javascript" src="js/glitch-lib.js"></script>
+        <script type="text/javascript" src="js/glitch-execute.js"></script>
         <script type="vert" id="fragmentShader">
             precision highp float;
 

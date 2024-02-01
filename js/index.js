@@ -1,6 +1,7 @@
 import {fillCanvas} from "./flowerManager";
 import {createDynamicPeaceAndLove} from "./peace";
 import {domIsReady} from "./pattern";
+import {Motion} from "./particles.js";
 
 const sources = document.querySelectorAll('#video source');
 let currentSourceIndex = 0;
@@ -37,6 +38,16 @@ document.querySelector('.button2').addEventListener('click', () => {
     //     snow.classList.toggle('effect');
     // }, 5000); // 1000 milliseconds = 1 second
 });
+document.querySelector('.button3').addEventListener('click', () => {
+    var gl = Object.create(glitch_exec);
+    gl.DELAY_BETWEEN_GLITCHES = 0;
+    gl.GLITCH_RENDER_COUNT = 20;
+    gl.GLITCH_INTERVAL_MIN = 10;
+    gl.GLITCH_INTERVAL_MAX = 50;
+    gl.GLITCH_INTERVAL_PROGRESSIVE = 0;
+    gl.start(document.body);
+});
+
 
 // document.querySelector('.button3').addEventListener('click', () => {
 //   audio();
@@ -139,6 +150,15 @@ window.onload = function() {
     }, 1000);
 }
 let powerClicked = false;
+
+function removeAllCanvases() {
+    var canvases = document.querySelectorAll('canvas');
+    let flowers = document.querySelector('#flowerCanvas');
+    flowers.parentNode.removeChild(flowers);
+    canvases.forEach(function(canvas) {
+        canvas.parentNode.removeChild(canvas);
+    });
+}
 document.querySelector('#power').addEventListener('click', () => {
     powerClicked = !powerClicked;
     if(powerClicked) {
@@ -183,6 +203,27 @@ document.querySelector('#power').addEventListener('click', () => {
                             overlay.classList.toggle('blendMode');
                         });
                         switchVideoSource();
+
+                        setTimeout(() => {
+                            removeAllCanvases();
+                            var gl = Object.create(glitch_exec);
+                            gl.DELAY_BETWEEN_GLITCHES = 0;
+                            gl.GLITCH_RENDER_COUNT = 20;
+                            gl.GLITCH_INTERVAL_MIN = 10;
+                            gl.GLITCH_INTERVAL_MAX = 50;
+                            gl.GLITCH_INTERVAL_PROGRESSIVE = 0;
+                            gl.start(document.body);
+                            var averageGlitchInterval = (gl.GLITCH_INTERVAL_MIN + gl.GLITCH_INTERVAL_MAX) / 2;
+                            var totalGlitchDuration = averageGlitchInterval * gl.GLITCH_RENDER_COUNT;
+
+                            setTimeout(() => {
+                                document.getElementById('topScreen').classList.add('animate');
+                                document.getElementById('bottomScreen').classList.add('animate');
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 3000);
+                            }, totalGlitchDuration);
+                        }, 10000);
                     },10000);
                 },10000)
             },10000)
