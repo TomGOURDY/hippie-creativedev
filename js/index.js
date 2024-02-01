@@ -38,11 +38,11 @@ document.querySelector('.button2').addEventListener('click', () => {
     // }, 5000); // 1000 milliseconds = 1 second
 });
 
-document.querySelector('.button3').addEventListener('click', () => {
-  audio();
-  switchVideoSource()
-  document.querySelector('#video').play() ;
-});
+// document.querySelector('.button3').addEventListener('click', () => {
+//   audio();
+//   switchVideoSource()
+//   document.querySelector('#video').play() ;
+// });
 
 
 
@@ -125,50 +125,69 @@ function audio() {
         audioContext.currentTime = video.currentTime;
     });
 }
+
+window.onload = function() {
+    let tele = document.querySelector('#tele');
+    tele.style.transition = 'transform 2s ease-in-out';
+    const circle = document.getElementById('circle');
+    setTimeout(() => {
+        circle.style.opacity = '0';
+    }, 1000);
+    tele.style.opacity = 1;
+    setTimeout(() => {
+        tele.style.transform = 'scale(1)';
+    }, 1000);
+}
+let powerClicked = false;
 document.querySelector('#power').addEventListener('click', () => {
-    let video = document.querySelector('.video');
-    let snow = document.querySelector('.snow');
-    video.classList.toggle('active');
-    videoElement.play();
-    setTimeout(() => {
-        video.classList.toggle('effect');
-    },3000);
-    setTimeout(() => {
+    powerClicked = !powerClicked;
+    if(powerClicked) {
+        let video = document.querySelector('.video');
+        let snow = document.querySelector('.snow');
+        video.classList.toggle('active');
         videoElement.play();
-        snow.classList.toggle('active');
-        switchVideoSource();
         setTimeout(() => {
-            snow.classList.toggle('active');
-        }, 400);
-        fillCanvas();
+            video.classList.toggle('effect');
+        },3000);
         setTimeout(() => {
+            videoElement.play();
             snow.classList.toggle('active');
             switchVideoSource();
             setTimeout(() => {
                 snow.classList.toggle('active');
             }, 400);
-            createDynamicPeaceAndLove();
+            fillCanvas();
             setTimeout(() => {
                 snow.classList.toggle('active');
                 switchVideoSource();
                 setTimeout(() => {
                     snow.classList.toggle('active');
                 }, 400);
-                let motionInstance = new Motion();
-                motionInstance.initialize();
+                createDynamicPeaceAndLove();
                 setTimeout(() => {
                     snow.classList.toggle('active');
+                    switchVideoSource();
                     setTimeout(() => {
                         snow.classList.toggle('active');
                     }, 400);
-                    domIsReady();
-                    audio();
-                    document.querySelectorAll('.overlay').forEach(overlay => {
-                        overlay.classList.toggle('blendMode');
-                    });
-                    switchVideoSource();
-                },10000);
+                    let motionInstance = new Motion();
+                    motionInstance.initialize();
+                    setTimeout(() => {
+                        snow.classList.toggle('active');
+                        setTimeout(() => {
+                            snow.classList.toggle('active');
+                        }, 400);
+                        domIsReady();
+                        audio();
+                        document.querySelectorAll('.overlay').forEach(overlay => {
+                            overlay.classList.toggle('blendMode');
+                        });
+                        switchVideoSource();
+                    },10000);
+                },10000)
             },10000)
         },10000)
-    },10000)
+    }else{
+        location.reload();
+    }
 });

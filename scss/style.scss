@@ -46,6 +46,8 @@ $screen-background: #121010;
     width: 100%;
     max-width: 600px;
     position: relative;
+    opacity: 0;
+    transform: scale(0.5);
     img {
         width: 100%;
         object-fit: contain;
@@ -267,4 +269,17 @@ $color-shadow:darken($color-main,25%);
         background: lighten($color-main, 15%);
         box-shadow: inset -2px 2px 2px 0px rgba(red($color-bright), green($color-bright), blue($color-bright), 1), inset 2px -2px 2px 0px rgba(red($color-shadow), green($color-shadow), blue($color-shadow), 0.3), inset 0px 0px 40px 15px rgba(red($color-main), green($color-main), blue($color-main), 1), 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 0 0 $color-shadow, 1px 1px 2px 1px rgba(red($color-shadow), green($color-shadow), blue($color-shadow), 0.5), 0px 0px 4px 1px rgba(red($color-shadow), green($color-shadow), blue($color-shadow), 1);
     }
+}
+
+#circle{
+    pointer-events: none;
+    width: 100vw; /* Adjust size as needed */
+    height: 100vh; /* Adjust size as needed */
+    top: 0;
+    left: 0;
+    background-color: black;
+    transition: opacity 2s ease; /* Adjust time as needed */
+    opacity: 1;
+    position: absolute;
+    z-index: 999999;
 }
